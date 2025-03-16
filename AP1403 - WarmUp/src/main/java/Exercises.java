@@ -3,9 +3,18 @@ public class Exercises {
     /*
         complete this function to check if the input number is prime or not
      */
-    public boolean isPrime(long n) {
-        // todo
-        return false;
+    public boolean isPrime(long n)
+    {
+        if(n<2)
+            return false;
+
+        for(int i=2 ; i < n/2 ; i++)
+        {
+            if(n % i == 0)
+                return false;
+        }
+
+        return true;
     }
 
     /*
@@ -14,8 +23,23 @@ public class Exercises {
         indices start from 0, e.g. 3 is the index 4 of this sequence
         if the input is not a fibonacci number with description above, return -1
      */
-    public long fibonacciIndex(long n) {
-        // todo
+    public long fibonacciIndex(long n)
+     {
+        int a = 0, b = 1, index = 0;
+
+         while(b < n)
+         {
+            b = a + b;
+            a = b - a;
+            index++;
+         }
+
+         if(n == 0)
+            return 0;
+
+         if(b == n)
+            return index+1;
+
         return -1;
     }
 
@@ -38,11 +62,31 @@ public class Exercises {
         the output has to be a two-dimensional array of characters, so don't just print the triangle!
      */
     public char[][] generateTriangle(int n) {
-        // todo
-        return null;
+        int i, j;
+        char triangle[][] = new char[n][n];
+        for(i = 0; i < n; i++)
+            for(j = 0; j < n; j++)
+                triangle[i][j] = ' ';
+
+        for (i = 1; i <= n; i++){
+            if(i <= 2 || i == n){
+                for(j = 1; j <= i ; j++)
+                    triangle[i-1][j-1] = '*';
+            }
+            else{
+                for(j = 1; j <= n ; j++ ){
+                    if(j==1 || j == i)
+                        triangle[i-1][j-1] = '*';
+
+                }
+                
+            }
+        }
+        return triangle;
     }
 
+
     public static void main(String[] args) {
-        // you can test your code here, but then it should be checked with test cases
+        // you can test your code here, but then it should be checked with test cases     //ok
     }
 }
